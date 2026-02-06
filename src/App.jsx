@@ -112,17 +112,24 @@ function RegistrationPage() {
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),
       })
+      const data = await response.json().catch(() => ({}))
 
-      if (!response.ok) {
-        throw new Error('Submission failed')
+      if (!response.ok || data.ok === false) {
+        throw new Error(
+          data.error || 'Submission failed. Please try again.',
+        )
       }
 
       setMessage('Submitted successfully!')
       toast.success('Registration received! We will be in touch soon.')
       navigate('/success')
     } catch (error) {
-      setMessage('Something went wrong. Please try again.')
-      toast.error('Submission failed. Please try again.')
+      const errorMessage =
+        error instanceof Error
+          ? error.message
+          : 'Submission failed. Please try again.'
+      setMessage(errorMessage)
+      toast.error(errorMessage)
     }
   }
 
