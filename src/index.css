@@ -1,0 +1,115 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    color-scheme: light;
+    --background: 48 100% 97%;
+    --foreground: 222 22% 12%;
+    --card: 0 0% 100%;
+    --card-foreground: 222 22% 12%;
+    --muted: 48 30% 92%;
+    --muted-foreground: 222 10% 42%;
+    --brand: 43 78% 52%;
+    --brand-foreground: 40 100% 12%;
+    --border: 40 24% 82%;
+    --ring: 43 78% 52%;
+    --shadow: 30 32% 18%;
+  }
+
+  .dark {
+    color-scheme: dark;
+    --background: 222 22% 8%;
+    --foreground: 210 20% 96%;
+    --card: 222 24% 12%;
+    --card-foreground: 210 20% 96%;
+    --muted: 222 12% 18%;
+    --muted-foreground: 215 12% 66%;
+    --brand: 43 78% 55%;
+    --brand-foreground: 40 100% 12%;
+    --border: 222 12% 26%;
+    --ring: 43 78% 55%;
+    --shadow: 223 30% 2%;
+  }
+
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: hsl(var(--brand) / 0.6) transparent;
+  }
+
+  *::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+
+  *::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  *::-webkit-scrollbar-thumb {
+    background: hsl(var(--brand) / 0.6);
+    border-radius: 999px;
+    border: 2px solid transparent;
+    background-clip: padding-box;
+  }
+
+  *::-webkit-scrollbar-thumb:hover {
+    background: hsl(var(--brand) / 0.75);
+  }
+
+  ::selection {
+    background: hsl(var(--brand) / 0.3);
+    color: hsl(var(--foreground));
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    margin: 0;
+    min-height: 100vh;
+    background: hsl(var(--background));
+    color: hsl(var(--foreground));
+    font-family: 'Inter', system-ui, sans-serif;
+    font-feature-settings: 'liga' 1, 'calt' 1, 'ss01' 1;
+    text-rendering: optimizeLegibility;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  code,
+  pre {
+    font-family: 'JetBrains Mono', ui-monospace, SFMono-Regular, monospace;
+  }
+
+  :focus-visible {
+    outline: 3px solid hsl(var(--ring) / 0.5);
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply border border-white/50 bg-white/75 shadow-soft backdrop-blur-xl dark:border-white/10 dark:bg-white/10;
+  }
+
+  .section-title {
+    @apply text-2xl font-semibold text-foreground sm:text-3xl;
+  }
+
+  .section-subtitle {
+    @apply text-sm font-medium uppercase tracking-wide text-muted-foreground;
+  }
+}
+
+@media print {
+  body {
+    background: white;
+    color: black;
+  }
+
+  .no-print {
+    display: none !important;
+  }
+}
