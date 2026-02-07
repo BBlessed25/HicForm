@@ -106,30 +106,46 @@ function RegistrationPage() {
     event.preventDefault()
     setMessage('')
 
+    const requiredFields = [
+      'fullName',
+      'branch',
+      'email',
+      'phone',
+      'employmentStatus',
+      'mainGoal',
+      'track',
+      'skill',
+      'serveInterest',
+    ]
+    const hasMissingRequired = requiredFields.some((field) => {
+      const value = form[field]
+      return typeof value !== 'string' || value.trim() === ''
+    })
+
+    if (hasMissingRequired) {
+      const errorMessage = 'Please complete all required fields.'
+      setMessage(errorMessage)
+      toast.error(errorMessage)
+      return
+    }
+
     try {
       const response = await fetch('/.netlify/functions/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(form),
       })
-      const data = await response.json().catch(() => ({}))
 
-      if (!response.ok || data.ok === false) {
-        throw new Error(
-          data.error || 'Submission failed. Please try again.',
-        )
+      if (!response.ok) {
+        throw new Error('Submission failed')
       }
 
       setMessage('Submitted successfully!')
       toast.success('Registration received! We will be in touch soon.')
       navigate('/success')
     } catch (error) {
-      const errorMessage =
-        error instanceof Error
-          ? error.message
-          : 'Submission failed. Please try again.'
-      setMessage(errorMessage)
-      toast.error(errorMessage)
+      setMessage('Something went wrong. Please try again.')
+      toast.error('Submission failed. Please try again.')
     }
   }
 
@@ -522,7 +538,7 @@ function RegistrationPage() {
             </CardHeader>
             <CardFooter>
               <a
-                href="tel:647-803-5088"
+                href="mailto:gpccanadasocialmedia@gmail.com"
                 className={cn(buttonVariants({ variant: 'primary' }))}
               >
                 Contact the HIC Team
