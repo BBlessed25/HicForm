@@ -536,13 +536,12 @@ function RegistrationPage() {
                 appreciate your interest and look forward to walking with you.
               </p>
             </CardHeader>
-            <CardFooter>
-              <a
-                href="mailto:gpccanadasocialmedia@gmail.com"
-                className={cn(buttonVariants({ variant: 'primary' }))}
-              >
-                Contact the HIC Team
-              </a>
+            <CardFooter className="flex flex-col items-center text-center text-sm text-muted-foreground">
+              <p className="font-semibold text-foreground">
+                Gospel Pillars Canada
+              </p>
+              <p>gpccanadasocialmedia@gmail.com</p>
+              <p>© 2026</p>
             </CardFooter>
           </Card>
         </RevealSection>
