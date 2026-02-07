@@ -539,8 +539,6 @@ function RegistrationPage() {
             <CardFooter>
               <a
                 href="mailto:gpccanadasocialmedia@gmail.com"
-                target="_blank"
-                rel="noreferrer"
                 className={cn(buttonVariants({ variant: 'primary' }))}
               >
                 Contact the HIC Team
