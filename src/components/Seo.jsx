@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet-async'
 export function Seo({
   title,
   description,
-  image = '/logo.png',
+  image = '/logo.jpeg',
   url = 'https://example.com',
 }) {
   const metaTitle = title ? `${title} | HIC Career Interest` : 'HIC Career Interest'

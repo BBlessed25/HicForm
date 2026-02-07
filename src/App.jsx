@@ -173,7 +173,7 @@ function RegistrationPage() {
         <div className="mx-auto flex max-w-5xl flex-wrap items-center justify-between gap-4 px-6 py-6">
           <div className="flex items-center gap-4">
             <img
-              src="/logo.png"
+              src="/logo.jpeg"
               alt="Gospel Pillars International logo"
               className="h-14 w-auto rounded-lg bg-white/70 p-2 shadow-soft"
             />
